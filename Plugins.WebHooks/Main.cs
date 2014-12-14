@@ -56,6 +56,8 @@ namespace Plugins.WebHooks
         User CreateUser(User user);
 
         User GetUser(string userId);
+
+        void Delete(string userId);
     }
 
     public class NopDirectory : IDirectory
@@ -71,6 +73,13 @@ namespace Plugins.WebHooks
         public User GetUser(string userId)
         {
             return new User() {UserName = userId};
+        }
+
+
+        public void Delete(string userId)
+        {
+            // Delete this user.
+            UserAuditLog.TrackDelete(userId);
         }
     }
 
