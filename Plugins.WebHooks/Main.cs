@@ -78,7 +78,8 @@ namespace Plugins.WebHooks
 
         public void Delete(string userId)
         {
-            throw new NotImplementedException();
+            // Delete this user.
+            UserAuditLog.TrackDelete(userId);
         }
     }
 
